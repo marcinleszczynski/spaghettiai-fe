@@ -1,7 +1,142 @@
 import {CustomFlowbiteTheme} from "flowbite-react";
 
 export const flowbiteTheme: CustomFlowbiteTheme = {
-
+    button: {
+        base: "!rounded-full",
+        disabled: "",
+        fullSized: "",
+        size: {
+            xs: "",
+            sm: "",
+            lg: "",
+            xl: ""
+        },
+        color: {
+            default: "",
+            alternative: "",
+            "main": "ring-[1px] ring-[#AAAA00F0] p-3 min-w-[200px] flex items-center justify-center bg-gradient-to-b from-main-border-light to-main-border-dark hover:bg-none hover:bg-[#F0F000] hover:ring-[3px] hover:ring-[#FFFFFF66] font-bold"
+        },
+    },
+    textInput: {
+        base: "",
+        addon: "",
+        field: {
+            base: "",
+            icon: {
+                base: "",
+                svg: ""
+            },
+            rightIcon: {
+                base: "",
+                svg: ""
+            },
+            input: {
+                base: "!rounded-xl min-w-[300px] text-lg p-3 focus:border-none focus:ring-[2px] focus:ring-[#C0C000DD]",
+                sizes: {
+                    sm: "",
+                    lg: "",
+                    md: ""
+                },
+                colors: {
+                    info: "",
+                    failure: "ring-red-600 ring-[2px]",
+                    success: "",
+                    warning: "",
+                    gray: ""
+                },
+                withIcon: {
+                    off: "",
+                    on: ""
+                },
+                withRightIcon: {
+                    off: "",
+                    on: ""
+                },
+                withAddon: {
+                    off: "",
+                    on: ""
+                },
+                withShadow: {
+                    off: "",
+                    on: ""
+                },
+            }
+        }
+    },
+    label: {
+        root: {
+            base: "font-semibold text-white text-[1.25rem] mb-2",
+            colors: {
+                default: "",
+                info: "",
+                failure: "",
+                success: "",
+                warning: ""
+            },
+            disabled: ""
+        }
+    },
+    helperText: {
+        root: {
+            base: "text-red-800 font-semibold",
+            colors: {
+                failure: "",
+                gray: "",
+                info: "",
+                success: "",
+                warning: ""
+            }
+        }
+    },
+    spinner: {
+        base: "inline animate-spin text-white",
+        color: {
+            primary: "fill-black",
+            default: "",
+            info: "",
+            failure: "",
+            success: "",
+            warning: "",
+            gray: "",
+            pink: "",
+            purple: ""
+        },
+        light: {
+            off: {
+                base: "",
+                color: {
+                    default: "",
+                    info: "",
+                    failure: "",
+                    success: "",
+                    warning: "",
+                    gray: "",
+                    pink: "",
+                    purple: ""
+                }
+            },
+            on: {
+                base: "",
+                color: {
+                    default: "",
+                    info: "",
+                    failure: "",
+                    success: "",
+                    warning: "",
+                    gray: "",
+                    pink: "",
+                    purple: ""
+                }
+            }
+        },
+        size: {
+            xs: "",
+            sm: "",
+            lg: "",
+            xl: "",
+            md: "w-6 h-6"
+        }
+    },
 }
 // export const flowbiteTheme: CustomFlowbiteTheme = {
 //     accordion: {
