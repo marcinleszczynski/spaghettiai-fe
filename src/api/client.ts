@@ -5,7 +5,7 @@ import {locations} from "../constants/locations.ts";
 import {useNavigate} from "react-router";
 
 const axiosInstance = axios.create({
-    baseURL: import.meta.env.BASE_URL,
+    baseURL: import.meta.env.VITE_BASE_API_URL,
 });
 
 axiosInstance.interceptors.request.use(
