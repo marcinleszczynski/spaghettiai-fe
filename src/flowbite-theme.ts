@@ -3,7 +3,6 @@ import {CustomFlowbiteTheme} from "flowbite-react";
 export const flowbiteTheme: CustomFlowbiteTheme = {
     button: {
         base: "!rounded-full",
-        disabled: "",
         fullSized: "",
         size: {
             xs: "",
@@ -14,8 +13,10 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
         color: {
             default: "",
             alternative: "",
-            "main": "ring-[1px] ring-[#AAAA00F0] p-3 min-w-[200px] flex items-center justify-center bg-gradient-to-b from-main-border-light to-main-border-dark hover:bg-none hover:bg-[#F0F000] hover:ring-[3px] hover:ring-[#FFFFFF66] font-bold"
+            "main": "ring-[1px] ring-[#AAAA00F0] p-3 min-w-[200px] flex items-center justify-center bg-gradient-to-b from-main-border-light to-main-border-dark hover:bg-none hover:bg-[#F0F000] hover:ring-[3px] hover:ring-[#FFFFFF66] font-bold",
+            "error": "p-3 min-w-[150px] flex items-center justify-center bg-gradient-to-b from-red-900 to-red-600 hover:bg-none hover:bg-red-600 hover:ring-[3px] hover:ring-[#FFFFFF66] font-bold"
         },
+        disabled: "!bg-none !bg-[#F0F00066] !ring-[3px] !ring-[#FFFFFF66] !text-[#00000066]",
     },
     textInput: {
         base: "",
@@ -31,7 +32,7 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
                 svg: ""
             },
             input: {
-                base: "!rounded-xl min-w-[300px] text-lg p-3 focus:border-none focus:ring-[2px] focus:ring-[#C0C000DD]",
+                base: "!rounded-xl min-w-[300px] text-lg p-3 focus:border-none focus:ring-[2px] focus:ring-[#C0C000DD] w-full",
                 sizes: {
                     sm: "",
                     lg: "",
@@ -133,8 +134,153 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
             xs: "",
             sm: "",
             lg: "",
-            xl: "",
+            xl: "w-16 h-16",
             md: "w-6 h-6"
+        }
+    },
+    modal: {
+        root: {
+            base: "backdrop-blur-lg flex items-center",
+            show: {
+                off: "",
+                on: ""
+            },
+            sizes: {
+                sm: "",
+                md: "",
+                lg: "",
+                xl: "",
+                "2xl": "",
+                "3xl": "",
+                "4xl": "",
+                "5xl": "",
+                "6xl": "",
+                "7xl": ""
+            },
+            positions: {
+                "bottom-left": "",
+                "bottom-right": "",
+                "bottom-center": "",
+                "top-left": "",
+                "top-center": "",
+                "top-right": "",
+                "center-left": "",
+                center: "justify-center",
+                "center-right": ""
+            }
+        },
+        content: {
+            base: "",
+            inner: ""
+        },
+        body: {
+            base: "w-[30vw] min-w-[300px] min-h-[30vh] rounded-b-[20px] bg-gradient-to-b from-green-900 to-green-400 border-l-main-border-dark border-l-2 border-r-main-border-dark border-r-2 border-b-main-border-dark border-b-2 flex justify-center items-center font-bold p-3",
+            popup: "",
+        },
+        header: {
+            base: "flex justify-between p-4 rounded-t-[20px] bg-green-900 text-lg border-l-main-border-dark border-l-2 border-r-main-border-dark border-r-2 border-t-main-border-dark border-t-2",
+            popup: "",
+            title: "",
+            close: {
+                base: "",
+                icon: ""
+            },
+        },
+        footer: {
+            base: "",
+            popup: ""
+        }
+    },
+    sidebar: {
+        root: {
+            base: "bg-gradient-to-b from-green-900 to-green-400 h-[100vh] min-w-[300px] border-r-main-border-dark border-[1px]",
+            collapsed: {
+                off: "",
+                on: ""
+            },
+            inner: ""
+        },
+        collapse: {
+            button: "",
+            icon: {
+                base: "",
+                open: {
+                    off: "",
+                    on: ""
+                }
+            },
+            label: {
+                base: "",
+                icon: {
+                    base: "",
+                    open: {
+                        off: "",
+                        on: ""
+                    }
+                }
+            },
+            list: ""
+        },
+        cta: {
+            base: "",
+            color: {
+                failure: "",
+                gray: "",
+                purple: "",
+                success: "",
+                warning: "",
+                blue: "",
+                dark: "",
+                green: "",
+                light: "",
+                red: "",
+                yellow: ""
+            }
+        },
+        item: {
+            active: "",
+            base: "ml-3 text-white text-lg rounded-r-[5px] px-3 !w-[300px]",
+            collapsed: {
+                insideCollapse: "",
+                noIcon: ""
+            },
+            content: {
+                base: ""
+            },
+            icon: {
+                base: "",
+                active: ""
+            },
+            label: "",
+            listItem: ""
+        },
+        items: {
+            base: "ml-3 mr-3 mt-3 p-2 rounded-r-[10px] hover:bg-gradient-to-l hover:from-[#FFFFFF99] hover:to-[#FFFFFF00] cursor-pointer"
+        },
+        itemGroup: {
+            base: ""
+        },
+        logo: {
+            base: "",
+            collapsed: {
+                off: "",
+                on: ""
+            },
+            img: ""
+        }
+    },
+    textarea: {
+        base: "border-none rounded-xl ring-main-border-light ring-2 resize-none focus:ring-main-border-dark focus:ring-2 h-64",
+        colors: {
+            info: "",
+            failure: "",
+            success: "",
+            warning: "",
+            gray: ""
+        },
+        withShadow: {
+            off: "",
+            on: ""
         }
     },
 }

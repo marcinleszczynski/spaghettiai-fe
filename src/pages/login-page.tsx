@@ -6,6 +6,8 @@ import {useMutation} from "@tanstack/react-query";
 import {useAuthContext} from "../lib/auth/auth-context.ts";
 import {useNavigate} from "react-router";
 import {LoadingButtonWrapper} from "../components/button/loading-button-wrapper.tsx";
+import {LoginBackground} from "../components/login/login-background.tsx";
+import {LoginFrame} from "../components/login/login-frame.tsx";
 
 export const LoginPage: FC = () => {
 
@@ -38,68 +40,69 @@ export const LoginPage: FC = () => {
     }
 
     return (
-        <div className="absolute z-0 inset-0 w-[100vw] h-[100vh] bg-[url('/cooking-bg-login.jpg')]">
-            <div className="w-[100%] h-[100%] backdrop-blur-xl flex justify-center items-center">
-                <div className="relative z-20 w-[50%] h-[50%] min-w-[700px] min-h-[400px] rounded-[40px] bg-gradient-to-b from-green-900 to-green-400 border-main-border-dark border-[2px] flex flex-col items-center justify-around">
-                    <div className="flex flex-col gap-3 items-center">
-                        <span className="text-white text-3xl font-bold">Welcome to Spaghetti AI</span>
-                        <span className="text-gray-300">Please log in to start your adventure with creating awesome meals</span>
-                    </div>
-                    <FormProvider {...loginForm}>
-                        <form className="flex flex-col gap-2 justify-center" onSubmit={handleSubmit(onLogin)}>
-                            <div>
-                                <Label htmlFor="email">Email</Label>
-                                <Controller
-                                    control={control}
-                                    rules={{
-                                        required: "This field is required"
-                                    }}
-                                    name="email"
-                                    render={({field}) => (
-                                        <TextInput
-                                            id="email"
-                                            name="email"
-                                            type="text"
-                                            value={watch("email")}
-                                            placeholder="Enter email..."
-                                            onChange={(e) => field.onChange(e)}
-                                            helperText={errors.email?.message}
-                                            color={errors.email ? "failure" : "success"}
-                                        />
-                                    )}
-                                />
-                            </div>
-                            <div>
-                                <Label htmlFor="password">Password</Label>
-                                <Controller
-                                    control={control}
-                                    rules={{
-                                        required: "This field is required"
-                                    }}
-                                    name="password"
-                                    render={({field}) => (
-                                        <TextInput
-                                            id="password"
-                                            name="password"
-                                            type="password"
-                                            value={watch("password")}
-                                            placeholder="Enter password..."
-                                            onChange={(e) => field.onChange(e)}
-                                            helperText={errors.password?.message}
-                                            color={errors.password ? "failure" : "success"}
-                                        />
-                                    )}
-                                />
-                            </div>
-                            <div className="flex justify-center">
-                                <LoadingButtonWrapper isLoading={loginMutation.isPending}>
-                                    <Button color="main" type="submit">Login</Button>
-                                </LoadingButtonWrapper>
-                            </div>
-                        </form>
-                    </FormProvider>
+        <LoginBackground>
+            <LoginFrame width={50} height={50}>
+                <div className="flex flex-col gap-3 items-center">
+                    <span className="text-white text-3xl font-bold">Welcome to Spaghetti AI</span>
+                    <span className="text-gray-300">Please log in to start your adventure with creating awesome meals</span>
                 </div>
-            </div>
-        </div>
+                <FormProvider {...loginForm}>
+                    <form className="flex flex-col gap-2 justify-center" onSubmit={handleSubmit(onLogin)}>
+                        <div>
+                            <Label htmlFor="email">Email</Label>
+                            <Controller
+                                control={control}
+                                rules={{
+                                    required: "This field is required"
+                                }}
+                                name="email"
+                                render={({field}) => (
+                                    <TextInput
+                                        id="email"
+                                        name="email"
+                                        type="text"
+                                        value={watch("email")}
+                                        placeholder="Enter email..."
+                                        onChange={(e) => field.onChange(e)}
+                                        helperText={errors.email?.message}
+                                        color={errors.email ? "failure" : "success"}
+                                    />
+                                )}
+                            />
+                        </div>
+                        <div>
+                            <Label htmlFor="password">Password</Label>
+                            <Controller
+                                control={control}
+                                rules={{
+                                    required: "This field is required"
+                                }}
+                                name="password"
+                                render={({field}) => (
+                                    <TextInput
+                                        id="password"
+                                        name="password"
+                                        type="password"
+                                        value={watch("password")}
+                                        placeholder="Enter password..."
+                                        onChange={(e) => field.onChange(e)}
+                                        helperText={errors.password?.message}
+                                        color={errors.password ? "failure" : "success"}
+                                    />
+                                )}
+                            />
+                        </div>
+                        <div className="flex justify-center mt-3">
+                            <LoadingButtonWrapper isLoading={loginMutation.isPending}>
+                                <Button color="main" type="submit">Login</Button>
+                            </LoadingButtonWrapper>
+                        </div>
+                        <div className="text-white">
+                            Don't have an account? <a href="/auth/register" className="hover:text-main-border-light">Click here to create one for FREE</a>
+                        </div>
+                    </form>
+                </FormProvider>
+            </LoginFrame>
+        </LoginBackground>
     )
 }

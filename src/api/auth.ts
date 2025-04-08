@@ -9,6 +9,18 @@ export interface IUserLoginRequest {
     password: string;
 }
 
+export interface IUserRegistrationRequest {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    phoneNumber: string;
+}
+
 export const login = (email: string, password: string) => {
     return Client.post<IUserToken, IUserLoginRequest>("/auth/login", {email, password});
+}
+
+export const register = (dto: IUserRegistrationRequest) => {
+    return Client.post<null, IUserRegistrationRequest>("/auth/register", dto);
 }

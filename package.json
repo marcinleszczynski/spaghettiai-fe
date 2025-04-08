@@ -17,10 +17,12 @@
     "axios": "^1.8.4",
     "flowbite-react": "^0.10.2",
     "jwt-decode": "^4.0.0",
+    "markdown-to-jsx": "^7.7.4",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.55.0",
+    "react-markdown": "^10.1.0",
     "react-router": "^6.30.0",
     "react-router-dom": "^6.30.0"
   },
