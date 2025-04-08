@@ -1,6 +1,6 @@
 import {FC, PropsWithChildren, useState} from "react";
 import {AuthContext, IAuthContext} from "../../lib/auth/auth-context.ts";
-import {getPayloadFromToken, getToken, JwtPayload, storeToken} from "../../lib/auth/token-provider.ts";
+import {getPayloadFromToken, getToken, JwtPayload, removeToken, storeToken} from "../../lib/auth/token-provider.ts";
 
 export const AuthProvider: FC<PropsWithChildren> = function ({ children }) {
 
@@ -14,7 +14,7 @@ export const AuthProvider: FC<PropsWithChildren> = function ({ children }) {
     }
 
     const logout = () => {
-        storeToken("");
+        removeToken();
         setToken("");
         setUser(null);
     }
