@@ -24,3 +24,7 @@ export const login = (email: string, password: string) => {
 export const register = (dto: IUserRegistrationRequest) => {
     return Client.post<null, IUserRegistrationRequest>("/auth/register", dto);
 }
+
+export const activate = (code: string) => {
+    return Client.put<null, null>(`/auth/activate?code=${code}`, null);
+}
