@@ -8,6 +8,8 @@ import {LoadingButtonWrapper} from "../components/button/loading-button-wrapper.
 import {useMutation} from "@tanstack/react-query";
 import {ErrorModal} from "../components/modals/error-modal.tsx";
 import {LinkSentModal} from "../components/modals/link-sent-modal.tsx";
+import {AxiosError} from "axios";
+import {ISpaghettiAiError} from "../api/client.ts";
 
 export const RegistrationPage: FC = () => {
 
@@ -21,30 +23,30 @@ export const RegistrationPage: FC = () => {
 
     const {control, watch, formState: {isValid, errors}, handleSubmit} = registrationForm;
 
-    const registerMutation = useMutation(({
-        mutationFn: () => {
-            return register({
-                email: watch("email"),
-                password: watch("password"),
-                firstName: watch("firstName"),
-                lastName: watch("lastName"),
-                phoneNumber: watch("phoneNumber")
-            })
+    const registerMutation = useMutation({
+        mutationFn: (data: IUserRegistrationRequest) => {
+            return register(data);
         },
         onSuccess: () => {
             setIsShowingLinkSentModal(true);
         },
-        onError: (error) => {
-            setErrorMessage(error.message)
+        onError: (error: AxiosError<ISpaghettiAiError>) => {
+            setErrorMessage(error.response?.data.message ?? "Error appeared")
             setIsShowingErrorModal(true)
         }
-    }))
+    })
 
     const onRegister = () => {
         if (!isValid) {
             return;
         }
-        registerMutation.mutate();
+        registerMutation.mutate({
+            email: watch("email"),
+            password: watch("password"),
+            firstName: watch("firstName"),
+            lastName: watch("lastName"),
+            phoneNumber: watch("phoneNumber")
+        });
     }
 
     const onModalClose = () => {

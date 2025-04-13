@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useState} from "react";
 import {Controller, FormProvider, useForm} from "react-hook-form";
 import {IUserLoginRequest, login} from "../api/auth.ts";
 import {Button, Label, TextInput} from "flowbite-react";
@@ -8,6 +8,9 @@ import {useNavigate} from "react-router";
 import {LoadingButtonWrapper} from "../components/button/loading-button-wrapper.tsx";
 import {LoginBackground} from "../components/login/login-background.tsx";
 import {LoginFrame} from "../components/login/login-frame.tsx";
+import {AxiosError} from "axios";
+import {ISpaghettiAiError} from "../api/client.ts";
+import {ErrorModal} from "../components/modals/error-modal.tsx";
 
 export const LoginPage: FC = () => {
 
@@ -18,6 +21,8 @@ export const LoginPage: FC = () => {
     const {control, watch, formState: {errors, isValid}, handleSubmit} = loginForm;
     const auth = useAuthContext();
     const navigate = useNavigate();
+    const [isShowingErrorModal, setIsShowingErrorModal] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string>("");
 
     const loginMutation = useMutation({
         mutationFn: () => {
@@ -27,8 +32,9 @@ export const LoginPage: FC = () => {
             auth?.login(response.data.token);
             navigate("/");
         },
-        onError: (error) => {
-            console.log("Error appeared:\n" + error.message)
+        onError: (error: AxiosError<ISpaghettiAiError>) => {
+            setErrorMessage(error.response?.data.message ?? "Error appeared")
+            setIsShowingErrorModal(true)
         }
     })
 
@@ -37,6 +43,10 @@ export const LoginPage: FC = () => {
             return
         }
         loginMutation.mutate();
+    }
+
+    const onModalClose = () => {
+        setIsShowingErrorModal(false);
     }
 
     return (
@@ -102,6 +112,9 @@ export const LoginPage: FC = () => {
                         </div>
                     </form>
                 </FormProvider>
+                {isShowingErrorModal && (
+                    <ErrorModal show={isShowingErrorModal} closeFn={onModalClose} errorMessage={errorMessage}/>
+                )}
             </LoginFrame>
         </LoginBackground>
     )
