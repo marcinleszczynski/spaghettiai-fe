@@ -2,11 +2,14 @@ import axios, {AxiosInstance, AxiosResponse} from 'axios';
 import {getToken} from "../lib/auth/token-provider.ts";
 import {security} from "../constants/security.ts";
 import {locations} from "../constants/locations.ts";
-import {useNavigate} from "react-router";
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_BASE_API_URL,
 });
+
+export interface ISpaghettiAiError {
+    message: string;
+}
 
 axiosInstance.interceptors.request.use(
     async (config) => {
@@ -21,9 +24,8 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
     (response) => response,
     (error) => {
-        const navigate = useNavigate();
         if (error.status === 403 && !window.location.pathname.includes(locations.AUTH)) {
-            navigate(locations.LOGIN)
+            window.location.href = locations.LOGIN;
         }
         throw error;
     }

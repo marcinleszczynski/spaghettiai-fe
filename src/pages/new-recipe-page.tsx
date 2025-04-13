@@ -5,6 +5,8 @@ import {useMutation} from "@tanstack/react-query";
 import {createRecipe} from "../api/recipe.ts";
 import {ErrorModal} from "../components/modals/error-modal.tsx";
 import {LoadingModal} from "../components/modals/loading-modal.tsx";
+import {AxiosError} from "axios";
+import {ISpaghettiAiError} from "../api/client.ts";
 
 export const NewRecipePage: FC = () => {
 
@@ -24,8 +26,8 @@ export const NewRecipePage: FC = () => {
             setIsShowingLoadingModal(false);
             navigate(`/recipe/${data.data.id}`);
         },
-        onError: (error) => {
-            setErrorMessage(error.message)
+        onError: (error: AxiosError<ISpaghettiAiError>) => {
+            setErrorMessage(error.response?.data.message ?? "Error appeared")
             setIsShowingLoadingModal(false);
             setIsShowingErrorModal(true);
         }
