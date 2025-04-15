@@ -15,6 +15,7 @@ import {RegistrationPage} from "./pages/registration-page.tsx";
 import {NavbarLayout} from "./components/layout/navbar-layout.tsx";
 import {SingleRecipePage} from "./pages/single-recipe-page.tsx";
 import {ActivationPage} from "./pages/activation-page.tsx";
+import {RecipeListPage} from "./pages/recipe-list-page.tsx";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,14 @@ createRoot(document.getElementById('root')!).render(
                                     path="/auth/activate"
                                     element={
                                         <ActivationPage />
+                                    }
+                                />
+                                <Route
+                                    path="/recipe"
+                                    element={
+                                        <NavbarLayout>
+                                            <RecipeListPage />
+                                        </NavbarLayout>
                                     }
                                 />
                             </Routes>
