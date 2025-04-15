@@ -16,7 +16,7 @@ export const NavbarLayout: FC<PropsWithChildren> = ({children}) => {
     const navigate = useNavigate();
 
     const recentRecipeQuery = useQuery({
-        queryKey: [queryKeys.recipes, recipeLimit],
+        queryKey: [queryKeys.recipesMenu, recipeLimit],
         queryFn: () => {
             return getRecentRecipes(recipeLimit);
         }
@@ -38,12 +38,16 @@ export const NavbarLayout: FC<PropsWithChildren> = ({children}) => {
                 </div>
                 <div className="mt-8">
                     <div
-                        className="flex text-white items-center gap-3 ml-3 mt-3 mr-3 py-1 hover:bg-gradient-to-l hover:from-[#FFFFFF99] hover:to-[#FFFFFF00] cursor-pointer rounded-r-[10px]">
+                        className="flex text-white items-center gap-3 ml-3 mt-3 mr-3 py-1 hover:bg-gradient-to-l hover:from-[#FFFFFF99] hover:to-[#FFFFFF00] cursor-pointer rounded-r-[10px]"
+                        onClick={() => navigate(`/`)}
+                    >
                         <img src={plusIcon} className="w-8 h-8" alt="plus-icon"/>
                         <div>New Recipe</div>
                     </div>
                     <div
-                        className="flex text-white items-end gap-3 ml-3 mt-3 mr-3 py-1 hover:bg-gradient-to-l hover:from-[#FFFFFF99] hover:to-[#FFFFFF00] cursor-pointer rounded-r-[10px]">
+                        className="flex text-white items-end gap-3 ml-3 mt-3 mr-3 py-1 hover:bg-gradient-to-l hover:from-[#FFFFFF99] hover:to-[#FFFFFF00] cursor-pointer rounded-r-[10px]"
+                        onClick={() => navigate(`/recipe`)}
+                    >
                         <img src={recipeIcon} className="w-8 h-8" alt="plus-icon"/>
                         <div>My Recipes</div>
                     </div>

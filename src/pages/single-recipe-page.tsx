@@ -30,35 +30,37 @@ export const SingleRecipePage = () => {
                     {recipe && (
                         <div className="flex flex-col justify-between h-full">
                             <div className="text-black text-2xl text-center mt-4">{recipe?.name}</div>
-                            <div className="text-black text-md mt-8 flex justify-center w-full">
-                                <div className="w-[70%]">
-                                    <Markdown options={{
-                                        forceBlock: true,
-                                        overrides: {
-                                            p: {
-                                                props: {
-                                                    className: 'mb-4 whitespace-pre-line'
-                                                }
-                                            },
-                                            ol: {
-                                                props: {
-                                                    className: 'list-decimal pl-6 mb-4 space-y-2'
-                                                }
-                                            },
-                                            li: {
-                                                props: {
-                                                    className: 'mb-2'
-                                                }
-                                            },
-                                            strong: {
-                                                props: {
-                                                    className: 'font-bold'
+                            <div className="text-black text-md mt-8 flex justify-center w-full h-[80%]">
+                                <div className="w-[100%] h-full overflow-y-auto flex flex-col items-center">
+                                    <div className="w-[70%]">
+                                        <Markdown options={{
+                                            forceBlock: true,
+                                            overrides: {
+                                                p: {
+                                                    props: {
+                                                        className: 'mb-4 whitespace-pre-line'
+                                                    }
+                                                },
+                                                ol: {
+                                                    props: {
+                                                        className: 'list-decimal pl-6 mb-4 space-y-2'
+                                                    }
+                                                },
+                                                li: {
+                                                    props: {
+                                                        className: 'mb-2'
+                                                    }
+                                                },
+                                                strong: {
+                                                    props: {
+                                                        className: 'font-bold'
+                                                    }
                                                 }
                                             }
-                                        }
-                                    }}>
-                                        {recipe?.content}
-                                    </Markdown>
+                                        }}>
+                                            {recipe?.content}
+                                        </Markdown>
+                                    </div>
                                 </div>
                             </div>
                             <div>

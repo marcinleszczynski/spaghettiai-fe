@@ -1,4 +1,5 @@
 export const queryKeys = {
-    recipes: "recipes",
+    recipesMenu: "recipesMenu",
+    recipesList: "recipesList",
     singleRecipe: "singleRecipe",
 }
